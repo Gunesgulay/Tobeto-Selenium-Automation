@@ -17,18 +17,17 @@ class Test_Loginclass:
 
     def teardown_method(self):
         self.driver.quit()  
-    
-    @pytest.mark.parametrize("email, password", [("majajiv633@vasteron.com", "deneme123")])    
-    def test_valid_login(self, email, password):
+      
+    def test_valid_login(self):
 
         firstLoginButton = self.driver.find_element(By.CSS_SELECTOR,c.FIRST_LOGIN_BUTTON)
         firstLoginButton.click()
 
         emailInput = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.NAME,c.EMAIL_NAME)))
-        emailInput.send_keys(email)
+        emailInput.send_keys("majajiv633@vasteron.com")
 
         passwordInput = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.NAME,c.PASSWORD_NAME)))
-        passwordInput.send_keys(password)
+        passwordInput.send_keys("deneme123")
 
         loginButton = self.driver.find_element(By.XPATH,c.LOGIN_BUTTON_XPATH)
         loginButton.click()
