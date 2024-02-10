@@ -8,14 +8,17 @@ import pytest
 import openpyxl
 from constants import globalConstants as c
 
-class Test_Loginclass:
+class Test_Login:
+
     def setup_method(self):
+        
         chrome_driver_path = Service("/Users/gunesgulay/Downloads/chromedriver-mac-arm64/chromedriver")
         self.driver = webdriver.Chrome(service=chrome_driver_path)
         self.driver.get(c.BASE_URL)
         self.driver.maximize_window()
 
     def teardown_method(self):
+
         self.driver.quit()  
       
     def test_valid_login(self):

@@ -9,7 +9,7 @@ import openpyxl
 from time import sleep
 from constants import globalConstants as c
 
-class Test_Registerclass:
+class Test_Register:
 
     def setup_method(self):
         chrome_driver_path = Service("/Users/gunesgulay/Downloads/chromedriver-mac-arm64/chromedriver")
@@ -76,7 +76,7 @@ class Test_Registerclass:
 
     def test_successful_register(self):
 
-        self.register("testautomation88@outlook.com", "deneme123", "deneme123", "5068414863")
+        self.register("testautomation878@outlook.com", "deneme123", "deneme123", "5068414863")
         sleep (5)
 
         registerMessage = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.CSS_SELECTOR,c.REGISTER_MESSAGE)))

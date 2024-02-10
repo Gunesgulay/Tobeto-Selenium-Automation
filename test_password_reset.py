@@ -9,7 +9,7 @@ import openpyxl
 from time import sleep
 from constants import globalConstants as c
 
-class Test_PasswordResetClass:
+class Test_Password_Reset:
 
     def setup_method(self):
 

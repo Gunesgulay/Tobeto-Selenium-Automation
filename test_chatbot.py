@@ -9,7 +9,7 @@ import openpyxl
 from time import sleep
 from constants import globalConstants as c
 
-class Test_Chatbotclass:
+class Test_Chatbot:
 
     def setup_method(self):
 
