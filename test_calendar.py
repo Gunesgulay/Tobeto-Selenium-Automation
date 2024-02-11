@@ -21,10 +21,10 @@ class Test_Calendar:
   
     def test_calendar_login(self):
 
-        calendar = self.driver.find_element(By.CLASS_NAME, "calendar-btn")
+        calendar = self.driver.find_element(By.CLASS_NAME, c.CALENDAR_CLASS)
         calendar.click()
 
-        calendarController = WebDriverWait(self.driver,15).until(ec.visibility_of_element_located((By.CSS_SELECTOR, ".fc-today-button")))
+        calendarController = WebDriverWait(self.driver,15).until(ec.visibility_of_element_located((By.CSS_SELECTOR, c.CALENDAR_CONTROLLER)))
         sleep (15)
         assert calendarController.text == "Bugün"
         sleep(3)
@@ -33,9 +33,9 @@ class Test_Calendar:
 
         self.test_calendar_login()
         sleep(3)
-        calendar_out = self.driver.find_element(By.XPATH, "/html/body/div[4]/div/div/div[1]/button")
+        calendar_out = self.driver.find_element(By.XPATH, c.CALENDAR_OUT)
         calendar_out.click()
         sleep(3)
 
-        calendar = self.driver.find_element(By.CLASS_NAME, "calendar-btn")
+        calendar = self.driver.find_element(By.CLASS_NAME, c.CALENDAR_CLASS)
         
