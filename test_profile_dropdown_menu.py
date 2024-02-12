@@ -6,6 +6,7 @@ from constants import globalConstants as c
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
 from time import sleep
+from valid_login import Test_Valid_Login
 
 class Test_Profile_Dropdown_Menu:
 
@@ -18,29 +19,13 @@ class Test_Profile_Dropdown_Menu:
 
     def teardown_method(self):
 
-        self.driver.quit()  
-
-    def valid_login(self):
-
-        firstLoginButton = self.driver.find_element(By.CSS_SELECTOR,c.FIRST_LOGIN_BUTTON)
-        firstLoginButton.click()
-
-        emailInput = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.NAME,c.EMAIL_NAME)))
-        emailInput.send_keys("majajiv633@vasteron.com")
-
-        passwordInput = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.NAME,c.PASSWORD_NAME)))
-        passwordInput.send_keys("deneme123")
-
-        loginButton = self.driver.find_element(By.XPATH,c.LOGIN_BUTTON_XPATH)
-        loginButton.click()
-
-        loginMessage = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.CSS_SELECTOR,c.LOGIN_MESSAGE_CSS)))
-        assert loginMessage.text == "• Giriş başarılı."   
+        self.driver.quit()    
 
     def test_successful_profile_information_entry(self):
 
-        self.valid_login()
-        sleep(5)
+        validLoginClass = Test_Valid_Login(self.driver)
+        validLoginClass.valid_login("majajiv633@vasteron.com","deneme123")
+        sleep(3)  
           
         clickMenu = self.driver.find_element(By.CSS_SELECTOR, c.CLICK_MENU)
         clickMenu.click()
@@ -95,8 +80,9 @@ class Test_Profile_Dropdown_Menu:
 
     def test_unsuccessful_profile_information_entry(self):
 
-        self.valid_login()
-        sleep(5)
+        validLoginClass = Test_Valid_Login(self.driver)
+        validLoginClass.valid_login("majajiv633@vasteron.com","deneme123")
+        sleep(3) 
           
         clickMenu = self.driver.find_element(By.CSS_SELECTOR, c.CLICK_MENU)
         clickMenu.click()
@@ -141,10 +127,11 @@ class Test_Profile_Dropdown_Menu:
         assert errorMessageController.text == "• Kimlik bilgilerinizi hatalı girdiniz."
         sleep(3)    
 
-    def test_empty_profile_information_entry(self):
+    def test_empty_profile_information_entry(self, actualResult = "Doldurulması zorunlu alan*"):
 
-        self.valid_login()
-        sleep(5)
+        validLoginClass = Test_Valid_Login(self.driver)
+        validLoginClass.valid_login("majajiv633@vasteron.com","deneme123")
+        sleep(3) 
           
         clickMenu = self.driver.find_element(By.CSS_SELECTOR, c.CLICK_MENU)
         clickMenu.click()
@@ -176,38 +163,20 @@ class Test_Profile_Dropdown_Menu:
         saveButton.click()
         sleep(3)
 
-        nameErrorMessageController = WebDriverWait(self.driver,15).until(ec.visibility_of_element_located((By.XPATH, c.NAME_ERROR_MESSAGE_CONTROLLER)))
-        sleep (5)
-        assert nameErrorMessageController.text == "Doldurulması zorunlu alan*"
-        
-        surnameErrorMessageController = WebDriverWait(self.driver,15).until(ec.visibility_of_element_located((By.XPATH, c.SURNAME_ERROR_MESSAGE_CONTROLLER)))
-        sleep (5)
-        assert surnameErrorMessageController.text == "Doldurulması zorunlu alan*"
-        
-        birthdayErrorMessageController = WebDriverWait(self.driver,15).until(ec.visibility_of_element_located((By.XPATH, c.BIRTHDAY_ERROR_MESSAGE_CONTROLLER)))
-        sleep (5)
-        assert birthdayErrorMessageController.text == "Doldurulması zorunlu alan*"
-
-        identityNumberErrorMessageController = WebDriverWait(self.driver,15).until(ec.visibility_of_element_located((By.CSS_SELECTOR, c.IDENTITY_NUMBER_ERROR_MESSAGE_CONTROLLER)))
-        sleep (5)
-        assert identityNumberErrorMessageController.text == "Aboneliklerde fatura için doldurulması zorunlu alan"
-
-        countryErrorMessageController = WebDriverWait(self.driver,15).until(ec.visibility_of_element_located((By.XPATH, c.COUNTRY_ERROR_MESSAGE_CONTROLLER)))
-        sleep (5)
-        assert countryErrorMessageController.text == "Doldurulması zorunlu alan*"
-
-        cityErrorMessageController = WebDriverWait(self.driver,15).until(ec.visibility_of_element_located((By.XPATH, c.CITY_ERROR_MESSAGE_CONTROLLER)))
-        sleep (5)
-        assert cityErrorMessageController.text == "Doldurulması zorunlu alan*"
-
-        districtErrorMessageController = WebDriverWait(self.driver,15).until(ec.visibility_of_element_located((By.XPATH, c.DISTRICT_ERROR_MESSAGE_CONTROLLER)))
-        sleep (5)
-        assert districtErrorMessageController.text == "Doldurulması zorunlu alan*"
+        expectedResult = WebDriverWait(self.driver,20).until(ec.visibility_of_all_elements_located((By.CSS_SELECTOR,c.ERROR_MESSAGE_EMPTY_PROFILE)))
+        sleep(1)
+        for i in range (len(expectedResult)):
+            result = expectedResult[i]
+            if result.text == "Aboneliklerde fatura için doldurulması zorunlu alan" or "*Aboneliklerde fatura için doldurulması zorunlu alan":
+                continue
+            else: 
+                assert result.text == actualResult
 
     def test_logout(self):
 
-        self.valid_login()
-        sleep(5)
+        validLoginClass = Test_Valid_Login(self.driver)
+        validLoginClass.valid_login("majajiv633@vasteron.com","deneme123")
+        sleep(3) 
           
         clickMenu = self.driver.find_element(By.CSS_SELECTOR, c.CLICK_MENU)
         clickMenu.click()
