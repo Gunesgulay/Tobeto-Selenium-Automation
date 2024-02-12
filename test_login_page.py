@@ -37,7 +37,6 @@ class Test_Login:
 
         loginMessage = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.CSS_SELECTOR,c.LOGIN_MESSAGE_CSS)))
         assert loginMessage.text == "• Giriş başarılı."
-        print("deneme")
 
     @pytest.mark.parametrize("email, password", [("majajiv633@vasteron.com", "deneme"),("majajiv@vasteron.com", "deneme123")])    
     def test_invalid_login(self, email, password):
