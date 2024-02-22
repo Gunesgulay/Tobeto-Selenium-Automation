@@ -12,7 +12,7 @@ class Test_Asenkron:
 
     def setup_method(self):
 
-        chrome_driver_path = Service("/Users/gunesgulay/Downloads/chromedriver-mac-arm64/chromedriver")
+        chrome_driver_path = Service("/Users/gunesgulay/Desktop/chromedriver-mac-arm64/chromedriver")
         self.driver = webdriver.Chrome(service=chrome_driver_path)
         self.driver.get(c.LOGIN_URL)
         self.driver.maximize_window()
@@ -60,7 +60,7 @@ class Test_Asenkron:
         iconLike.click()
         sleep(3)
 
-        likeButtonLiked = WebDriverWait(self.driver,5).until(ec.visibility_of)
+        #likeButtonLiked = WebDriverWait(self.driver,5).until(ec.visibility_of)
         
     def test_asenkron_undo_like(self):
 

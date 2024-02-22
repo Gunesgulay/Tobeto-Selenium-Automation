@@ -12,12 +12,14 @@ from constants import globalConstants as c
 class Test_Register:
 
     def setup_method(self):
-        chrome_driver_path = Service("/Users/gunesgulay/Downloads/chromedriver-mac-arm64/chromedriver")
+
+        chrome_driver_path = Service("/Users/gunesgulay/Desktop/chromedriver-mac-arm64/chromedriver")
         self.driver = webdriver.Chrome(service=chrome_driver_path)
-        self.driver.get(c.BASE_URL)
+        self.driver.get(c.LOGIN_URL)
         self.driver.maximize_window()
 
     def teardown_method(self):
+        
         self.driver.quit()  
 
     def register(self, email, password1, password2, phone):
@@ -76,7 +78,7 @@ class Test_Register:
 
     def test_successful_register(self):
 
-        self.register("testautomation878@outlook.com", "deneme123", "deneme123", "5068414863")
+        self.register("testautomation87@outlook.com", "deneme123", "deneme123", "5068414863")
         sleep (5)
 
         registerMessage = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.CSS_SELECTOR,c.REGISTER_MESSAGE)))

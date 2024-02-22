@@ -14,7 +14,7 @@ class Test_My_Education:
 
     def setup_method(self):
 
-        chrome_driver_path = Service("/Users/gunesgulay/Downloads/chromedriver-mac-arm64/chromedriver")
+        chrome_driver_path = Service("/Users/gunesgulay/Desktop/chromedriver-mac-arm64/chromedriver")
         self.driver = webdriver.Chrome(service=chrome_driver_path)
         self.driver.get(c.LOGIN_URL)
         self.driver.maximize_window()
@@ -157,7 +157,7 @@ class Test_My_Education:
         self.driver.execute_script("arguments[0].scrollIntoView()", beginButton) 
         sleep(3)
         beginButton.click()
-        sleep(2)
+        sleep(3)
 
         myEducationLink = self.webdriver_wait(10,c.MY_EDUCATION_LINK)
         myEducationLink.click()
@@ -166,7 +166,7 @@ class Test_My_Education:
         saveButton.click()
 
         expectedResult = WebDriverWait(self.driver,20).until(ec.visibility_of_all_elements_located((By.CSS_SELECTOR,c.EXPECTED_RESULT_EMPTY)))
-        sleep(1)
+        sleep(3)
         for i in range (len(expectedResult)):
             result = expectedResult[i]
             assert result.text == actualResult

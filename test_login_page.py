@@ -12,9 +12,9 @@ class Test_Login:
 
     def setup_method(self):
         
-        chrome_driver_path = Service("/Users/gunesgulay/Downloads/chromedriver-mac-arm64/chromedriver")
+        chrome_driver_path = Service("/Users/gunesgulay/Desktop/chromedriver-mac-arm64/chromedriver")
         self.driver = webdriver.Chrome(service=chrome_driver_path)
-        self.driver.get(c.BASE_URL)
+        self.driver.get(c.LOGIN_URL)
         self.driver.maximize_window()
 
     def teardown_method(self):

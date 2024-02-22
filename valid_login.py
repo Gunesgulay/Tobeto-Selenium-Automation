@@ -13,7 +13,7 @@ class Test_Valid_Login:
 
     def setup_method(self):
 
-        chrome_driver_path = Service("/Users/gunesgulay/Downloads/chromedriver-mac-arm64/chromedriver")
+        chrome_driver_path = Service("/Users/gunesgulay/Desktop/chromedriver-mac-arm64/chromedriver")
         self.driver = webdriver.Chrome(service=chrome_driver_path)
         self.driver.get(c.LOGIN_URL)
         self.driver.maximize_window()
@@ -28,9 +28,11 @@ class Test_Valid_Login:
         firstLoginButton.click()
 
         emailInput = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.NAME,c.EMAIL_NAME)))
+        sleep(2)
         emailInput.send_keys(email)
 
         passwordInput = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.NAME,c.PASSWORD_NAME)))
+        sleep(2)
         passwordInput.send_keys(password)
 
         loginButton = self.driver.find_element(By.XPATH,c.LOGIN_BUTTON_XPATH)
