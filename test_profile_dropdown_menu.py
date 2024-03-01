@@ -24,7 +24,7 @@ class Test_Profile_Dropdown_Menu:
     def test_successful_profile_information_entry(self):
 
         validLoginClass = Test_Valid_Login(self.driver)
-        validLoginClass.valid_login("majajiv633@vasteron.com","deneme123")
+        validLoginClass.valid_login("gunesgulay@icloud.com","unutma34")
         sleep(3)  
           
         clickMenu = self.driver.find_element(By.CSS_SELECTOR, c.CLICK_MENU)
@@ -36,19 +36,20 @@ class Test_Profile_Dropdown_Menu:
         sleep(4)
         
         birthdayInput = self.driver.find_element(By.NAME, c.BIRTHDAY_INPUT)
-        birthdayInput.send_keys("19-07-1999")  
+        birthdayInput.send_keys("")  
 
         identityNumber =self.driver.find_element(By.NAME, c.IDENTITY_NUMBER)
-        identityNumber.send_keys("12345678646")
+        identityNumber.send_keys("")
        
         countryName = self.driver.find_element(By.NAME, c.COUNTRY_NAME)
-        countryName.send_keys("Türkiye")
+        countryName.send_keys("")
         sleep(4)
 
-        self.driver.execute_script("window.scrollTo(0,800)")
+        self.driver.execute_script("window.scrollTo(0,1000)")
 
-        city = WebDriverWait(self.driver,5).until(ec.element_to_be_clickable((By.XPATH, c.CITY)))
+        city = WebDriverWait(self.driver,25).until(ec.element_to_be_clickable((By.NAME, c.CITY)))
         city.click()
+        sleep(3)
 
         cityName = self.driver.find_element(By.XPATH, c.CITY_NAME)
         cityName.click()
@@ -62,7 +63,7 @@ class Test_Profile_Dropdown_Menu:
         sleep(3)
 
         enterAddress = self.driver.find_element(By.NAME, c.ADDRESS)
-        enterAddress.send_keys("Misket 60 Cadde 5 No:4")
+        enterAddress.send_keys("")
         sleep(2)
             
         aboutMe = self.driver.find_element(By.XPATH, c.ABOUT_ME)

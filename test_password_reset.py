@@ -28,7 +28,7 @@ class Test_Password_Reset:
         resetButton.click()
 
         emailInput = WebDriverWait(self.driver,2).until(ec.visibility_of_element_located((By.XPATH, c.SIGN_UP_MAIL_XPATH)))
-        emailInput.send_keys("test456@hotmail.com")
+        emailInput.send_keys("testautomation652@gmail.com")
 
         sendButton = WebDriverWait(self.driver,2).until(ec.visibility_of_element_located((By.XPATH, c.SEND_BUTTON_XPATH)))
         sendButton.click()
@@ -49,3 +49,18 @@ class Test_Password_Reset:
 
         errorMessage = WebDriverWait(self.driver,2).until(ec.visibility_of_element_located((By.XPATH, c.ERROR_MESSAGE)))
         assert errorMessage.text == "• Girdiğiniz e-posta geçersizdir."    
+
+    def test_unregistered_email_password_reset(self):
+
+        resetButton = WebDriverWait(self.driver,10).until(ec.visibility_of_element_located((By.XPATH, c.PASSWORD_RESET_BUTTON)))
+        resetButton.click()
+
+        emailInput = WebDriverWait(self.driver,2).until(ec.visibility_of_element_located((By.XPATH, c.SIGN_UP_MAIL_XPATH)))
+        emailInput.send_keys("example123@hotmail.com")
+
+        sendButton = WebDriverWait(self.driver,2).until(ec.visibility_of_element_located((By.XPATH, c.SEND_BUTTON_XPATH)))
+        sendButton.click()
+
+        errorMessage = WebDriverWait(self.driver,2).until(ec.visibility_of_element_located((By.XPATH, c.ERROR_MESSAGE)))
+        assert errorMessage.text == "• Girdiğiniz e-posta sistemde kayıtlı değildir."    
+        #Burada bug var, "• Şifre sıfırlama linkini e-posta adresinize gönderdik. Lütfen gelen kutunuzu kontrol edin." uyarısı görüntüleniyor.

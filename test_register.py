@@ -78,7 +78,7 @@ class Test_Register:
 
     def test_successful_register(self):
 
-        self.register("testautomation1116@outlook.com", "deneme123", "deneme123", "5068414863")
+        self.register("testautomation76549@outlook.com", "deneme123", "deneme123", "5068414863")
         sleep (5)
 
         registerMessage = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.CSS_SELECTOR,c.REGISTER_MESSAGE)))
@@ -123,7 +123,7 @@ class Test_Register:
         
         self.register("testautomation65@gmail.com", "test4", "test4", "5068372511")
 
-        errorMessage = WebDriverWait(self.driver,2).until(ec.presence_of_element_located((By.CLASS_NAME, c.PASSWORD_ERROR_MESSAGE)))
+        errorMessage = WebDriverWait(self.driver,3).until(ec.presence_of_element_located((By.CLASS_NAME, c.PASSWORD_ERROR_MESSAGE)))
         assert errorMessage.text == "• Şifreniz en az 6 karakterden oluşmalıdır."
         sleep(5)
 

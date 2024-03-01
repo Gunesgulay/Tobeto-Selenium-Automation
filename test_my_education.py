@@ -99,14 +99,16 @@ class Test_My_Education:
         selectDateCalendar = self.webdriver_wait(10,c.SELECT_DATE_CALENDAR)
         selectDateCalendar.click()
         
-        #continueEducation = self.webdriver_wait(10,c.CONTINUE_CSS)
-        # assert continueEducation.is_enabled() == False # burada bug var, 'devam ediyorum' onay kutusu aktif olmamalı
+        continueEducation = self.webdriver_wait(10,c.CONTINUE_CSS)
+        assert continueEducation.is_enabled() == False 
+        #burada bug var, 'devam ediyorum' onay kutusu aktif olmamalı
 
         saveButton = self.webdriver_wait(20,c.SAVE_BUTTON_CSS)
         saveButton.click()
 
         expectedResult = self.webdriver_wait(10,c.EXPECTED_RESULT_CSS)
         assert expectedResult.text == actualResult
+        sleep(3)
 
     @pytest.mark.parametrize("education_level,school,department,start_year",read_continue_education_data_json())
     def test_continue_with_select_registration(self,education_level,school,department,start_year,actualResult = "• Eğitim bilgisi eklendi."):
@@ -145,7 +147,8 @@ class Test_My_Education:
         saveButton.click()
 
         expectedResult = self.webdriver_wait(10,c.EXPECTED_RESULT_CSS)
-        assert expectedResult.text == actualResult   
+        assert expectedResult.text == actualResult  
+        sleep(3) 
 
     def test_empty_field_register(self,actualResult = "Doldurulması zorunlu alan*"):
 
@@ -170,4 +173,5 @@ class Test_My_Education:
         for i in range (len(expectedResult)):
             result = expectedResult[i]
             assert result.text == actualResult
+        sleep(3)    
     
