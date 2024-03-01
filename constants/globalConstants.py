@@ -37,7 +37,7 @@ PASSWORD_RESET_BUTTON = "//p[@class='text-decoration-none text-muted mt-5 d-bloc
 ERROR_MESSAGE = "//*[@id='__next']/div/main/div[2]/div/div[2]"
 IFRAME_ID = "exw-launcher-frame"
 LAUNCHER_BUTTON = "launcher"
-TOBETO_MESSAGE = "//section[@class='position-relative py-lg-20 bg-light-light py-sm-10']"
+TOBETO_MESSAGE = "span[class='exw-with-avatar']"
 IFRAME_MESSAGE_BOX = "iframe[class='exw-conversation-container-frame']"
 MINIMIZE_ICON = "svg[class='exw-minimize-button header-button']"
 IFRAME_CSS = "iframe[class='exw-launcher-frame animated swing']"
@@ -143,6 +143,7 @@ SELECT_LANGUAGE_DROPDOWN ="select[name='languageName']"
 SELECT_LEVEL_DROPDOWN = "select[name='proficiency']"
 MY_EDUCATION_LINK = "div[class='p-2 py-4 mobile-sidebar']>a[class='btn mb-2 text-start w-100  sidebar-link ']:nth-child(3) span[class='sidebar-text']"
 EXPECTED_RESULT_EMPTY = "span[class='text-danger']"
+IFRAME_OPEN = "iframe[class='exw-conversation-container-frame']"
 
 
 

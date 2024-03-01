@@ -78,7 +78,7 @@ class Test_Register:
 
     def test_successful_register(self):
 
-        self.register("testautomation87@outlook.com", "deneme123", "deneme123", "5068414863")
+        self.register("testautomation1116@outlook.com", "deneme123", "deneme123", "5068414863")
         sleep (5)
 
         registerMessage = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.CSS_SELECTOR,c.REGISTER_MESSAGE)))
@@ -105,7 +105,7 @@ class Test_Register:
 
     def test_invalid_phone_message2(self):
 
-        self.register("testautomation1@gmail.com", "deneme123", "deneme123", "12345678987")
+        self.register("testautomation123@gmail.com", "deneme123", "deneme123", "12345678987")
 
         invalidPhoneMessage2 = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.XPATH,c.INVALID_PHONE_MESSAGE2)))
         assert invalidPhoneMessage2.text == "En fazla 10 karakter girebilirsiniz."    

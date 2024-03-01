@@ -34,12 +34,18 @@ class Test_Chatbot:
         launcher_button.click()
         sleep(10)
 
-        tobetoMessage = WebDriverWait(self.driver,15).until(ec.visibility_of_element_located((By.XPATH, c.TOBETO_MESSAGE)))
-        sleep (15)
-        assert tobetoMessage.text == "Tobeto Yardım"
-        
+        self.driver.switch_to.default_content()
+
+        iframe = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.CSS_SELECTOR,c.IFRAME_OPEN)))
+        WebDriverWait(self.driver,5).until(ec.frame_to_be_available_and_switch_to_it(iframe))
+
+        tobetoMessage = WebDriverWait(self.driver,30).until(ec.visibility_of_element_located((By.CSS_SELECTOR, c.TOBETO_MESSAGE)))
+        sleep (5)
+        assert tobetoMessage.text == "Merhaba 👋"
         
     def test_chatbot_icon_close(self):
+
+        wait = WebDriverWait(self.driver, 10) 
 
         self.test_chatbot_icon_open()
         sleep (5)
@@ -53,8 +59,8 @@ class Test_Chatbot:
         sleep(3)
 
         self.driver.switch_to.default_content()
-        iframe = WebDriverWait(self.driver,30).until(ec.visibility_of_element_located((By.CSS_SELECTOR, c.IFRAME_CSS)))
-        sleep(3)
+
+        iframe = wait.until(ec.presence_of_element_located((By.ID, c.IFRAME_ID)))
         self.driver.switch_to.frame(iframe)
         
         chatbot_button = WebDriverWait(self.driver,15).until(ec.visibility_of_element_located((By.CSS_SELECTOR, c.CHATBOT_BUTTON)))
