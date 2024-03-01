@@ -24,7 +24,7 @@ class Test_Asenkron:
     def test_go_asenkron_course(self):
             
         validLoginClass = Test_Valid_Login(self.driver)
-        validLoginClass.valid_login("gunesgulay@icloud.com","********")
+        validLoginClass.valid_login("gunesgulay@icloud.com","unutma34")
         sleep(3)
 
         self.driver.execute_script("window.scrollTo(0,300)")
@@ -59,8 +59,6 @@ class Test_Asenkron:
         iconLike = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.CLASS_NAME, c.ICON_LIKE)))
         iconLike.click()
         sleep(3)
-
-        #likeButtonLiked = WebDriverWait(self.driver,5).until(ec.visibility_of)
         
     def test_asenkron_undo_like(self):
 
@@ -69,6 +67,9 @@ class Test_Asenkron:
         iconDislike = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.XPATH, c.ICON_DISLIKE)))
         iconDislike.click()
         sleep(3)
+
+        assert False 
+        print ("'Favorileriden çıkarma işlemin başarıyla gerçekleşti.' uyarısı görüntülenememektedir.")
         
     def test_view_likers(self):
 

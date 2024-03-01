@@ -68,6 +68,9 @@ class Test_Senkron:
         iconDislike.click()
         sleep(3)      
 
+        assert False 
+        print ("'Favorileriden çıkarma işlemin başarıyla gerçekleşti.' uyarısı görüntülenememektedir.")
+
     def test_view_likers(self):
 
         self.test_go_senkron_course()
