@@ -24,7 +24,7 @@ class Test_Profile_Dropdown_Menu:
     def test_successful_profile_information_entry(self):
 
         validLoginClass = Test_Valid_Login(self.driver)
-        validLoginClass.valid_login("gunesgulay@icloud.com","unutma34")
+        validLoginClass.valid_login("gunesgulay@icloud.com","********")
         sleep(3)  
           
         clickMenu = self.driver.find_element(By.CSS_SELECTOR, c.CLICK_MENU)
